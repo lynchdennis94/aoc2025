@@ -29,4 +29,10 @@ go.work.sum
 
 # Editor/IDE
 # .idea/
-# .vscode/
+.vscode/
+
+# Puzzle inputs
+puzzles/
+
+# App
+app
