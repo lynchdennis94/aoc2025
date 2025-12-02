@@ -31,6 +31,8 @@ func main() {
 	switch day {
 	case 1:
 		dailySolution = NewDayOne(isTest)
+	case 2:
+		dailySolution = NewDayTwo(isTest)
 	default:
 		log.Fatal("Not Yet Implemented")
 
