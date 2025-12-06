@@ -35,6 +35,8 @@ func main() {
 		dailySolution = NewDayTwo(isTest)
 	case 3:
 		dailySolution = NewDayThree(isTest)
+	case 4:
+		dailySolution = NewDayFour(isTest)
 	default:
 		log.Fatal("Not Yet Implemented")
 
