@@ -8,7 +8,6 @@ import (
 )
 
 type Solution interface {
-	LoadFile()
 	SolvePartA()
 	SolvePartB()
 }
@@ -42,7 +41,6 @@ func main() {
 
 	}
 
-	dailySolution.LoadFile()
 	dailySolution.SolvePartA()
 	dailySolution.SolvePartB()
 }

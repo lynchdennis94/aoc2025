@@ -2,9 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"os"
-	"strings"
 )
 
 type Point struct {
@@ -29,23 +26,9 @@ type DayFour struct {
 }
 
 func NewDayFour(isTest bool) *DayFour {
-	path := "puzzles/day_four"
-	if isTest {
-		path += "_test.txt"
-	} else {
-		path += ".txt"
-	}
-
-	return &DayFour{path: path}
-}
-
-func (d *DayFour) LoadFile() {
-	dat, err := os.ReadFile(d.path)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	d.args = strings.Split(string(dat), "\n")
+	path := derivePath("day_four", isTest)
+	args := loadFileArgs(path, "\n")
+	return &DayFour{path, args}
 }
 
 func (d *DayFour) SolvePartA() {

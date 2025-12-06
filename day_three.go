@@ -3,9 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
-	"os"
 	"strconv"
-	"strings"
 )
 
 type DayThree struct {
@@ -14,23 +12,9 @@ type DayThree struct {
 }
 
 func NewDayThree(isTest bool) *DayThree {
-	path := "puzzles/day_three"
-	if isTest {
-		path += "_test.txt"
-	} else {
-		path += ".txt"
-	}
-
-	return &DayThree{path: path}
-}
-
-func (d *DayThree) LoadFile() {
-	dat, err := os.ReadFile(d.path)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	d.args = strings.Split(string(dat), "\n")
+	path := derivePath("day_three", isTest)
+	args := loadFileArgs(path, "\n")
+	return &DayThree{path, args}
 }
 
 func findLargestDigitInRange(bank string, start, end int) (int, int) {

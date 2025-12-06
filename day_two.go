@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"log"
-	"os"
 	"strconv"
 	"strings"
 )
@@ -52,23 +51,9 @@ func isInvalidID(id string) bool {
 }
 
 func NewDayTwo(isTest bool) *DayTwo {
-	path := "puzzles/day_two"
-	if isTest {
-		path += "_test.txt"
-	} else {
-		path += ".txt"
-	}
-
-	return &DayTwo{path: path}
-}
-
-func (d *DayTwo) LoadFile() {
-	dat, err := os.ReadFile(d.path)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	d.args = strings.Split(string(dat), ",")
+	path := derivePath("day_two", isTest)
+	args := loadFileArgs(path, ",")
+	return &DayTwo{path, args}
 }
 
 func (d *DayTwo) SolvePartA() {

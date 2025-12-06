@@ -4,9 +4,7 @@ import (
 	"fmt"
 	"log"
 	"math"
-	"os"
 	"strconv"
-	"strings"
 )
 
 type DayOne struct {
@@ -15,14 +13,9 @@ type DayOne struct {
 }
 
 func NewDayOne(isTest bool) *DayOne {
-	path := "puzzles/day_one"
-	if isTest {
-		path += "_test.txt"
-	} else {
-		path += ".txt"
-	}
-
-	return &DayOne{path: path}
+	path := derivePath("day_one", isTest)
+	args := loadFileArgs(path, "\n")
+	return &DayOne{path, args}
 }
 
 func calculateNextTurn(currentSpot int, turnInstruction string) (int, int) {
@@ -59,15 +52,6 @@ func calculateNextTurn(currentSpot int, turnInstruction string) (int, int) {
 	}
 
 	return nextSpot, timesCrossedZero
-}
-
-func (d *DayOne) LoadFile() {
-	dat, err := os.ReadFile(d.path)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	d.args = strings.Split(string(dat), "\n")
 }
 
 func (d *DayOne) SolvePartA() {
